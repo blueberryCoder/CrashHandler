@@ -15,8 +15,8 @@
 
 package com.blueberry.crash;
 
-import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
@@ -191,6 +191,17 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         String androidVersion = Build.VERSION.SDK_INT + "";
         String threadName = t.getName();
 
+        String versionName = "";
+        int versionCode = 0;
+
+        try {
+            PackageInfo packageInfo =
+                    mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0);
+            versionName = packageInfo.versionName;
+            versionCode = packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return String.format(
                 "------------------------------------ \n" +
@@ -200,8 +211,13 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                         "ABI:%s \n" +
                         "model:%s \n" +
                         "androidVersion:%s\n" +
+                        "versionName:%s\n" +
+                        "versionCode:%s\n" +
                         "threadName:%s \n" +
                         "------------------------------------ \n",
-                time, device, product, ABI, model, androidVersion, threadName);
+                time, device, product, ABI, model, androidVersion,
+                versionName,
+                versionCode,
+                threadName);
     }
 }
