@@ -1,5 +1,5 @@
 # CrashHandler
-
+[ ![Download](https://api.bintray.com/packages/blueberrycoder/maven/crash/images/download.svg) ](https://bintray.com/blueberrycoder/maven/crash/_latestVersion)
 ## 用法
 
 ```java
@@ -21,7 +21,7 @@
                 }
                 .start();
 ```
-
+# License
 ```
 Copyright (c) 2017. blueberry
 Licensed under the Apache License, Version 2.0 (the "License");

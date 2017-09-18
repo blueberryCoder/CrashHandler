@@ -14,6 +14,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    sourceSets {
+        main {
+            java.srcDirs 'src/main/java'
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            res.srcDirs 'src/main/res'
+        }
+    }
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -30,3 +39,16 @@ publish {
     desc = 'this is a android library '
     website = 'https://github.com/blueberryCoder/CrashHandler'
 }
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}
+
+
+

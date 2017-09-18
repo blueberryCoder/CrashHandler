@@ -15,7 +15,9 @@
 
 package com.blueberry.crash;
 
+import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 
 import java.io.Closeable;
@@ -188,6 +190,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         String model = Build.MODEL;
         String androidVersion = Build.VERSION.SDK_INT + "";
         String threadName = t.getName();
+
 
         return String.format(
                 "------------------------------------ \n" +
