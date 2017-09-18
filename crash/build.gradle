@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply from: '../buildsystem/app.gradle'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
 
@@ -18,4 +19,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     def appTestDependencies = rootProject.ext.appTestDependencies
     testCompile appTestDependencies.junit
+}
+
+
+publish {
+    userOrg = 'blueberrycoder'
+    groupId = 'com.blueberry'
+    artifactId = 'crash'
+    publishVersion = android.defaultConfig.versionName //版本号
+    desc = 'this is a android library '
+    website = 'https://github.com/blueberryCoder/CrashHandler'
 }

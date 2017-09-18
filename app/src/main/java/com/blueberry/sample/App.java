@@ -20,6 +20,7 @@ public class App extends Application {
         CrashHandler.getInstance()
                 .initialize(this)
                 .isWriteLocal(true)
+                .setParentFile(null)
                 .isDebug(true)
                 .setDebugErrorHandler(new GlobalErrorHandler() {
                     @Override
