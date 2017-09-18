@@ -1,0 +1,25 @@
+apply plugin: 'com.android.application'
+apply from: '../buildsystem/app.gradle'
+
+android {
+
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    def appDependencies = rootProject.ext.appDependencies
+    compile project(':crash')
+
+    compile appDependencies.appcompat
+    testCompile appTestDependencies.junit
+
+}

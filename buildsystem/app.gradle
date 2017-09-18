@@ -1,0 +1,29 @@
+android {
+    lintOptions {
+        abortOnError false
+    }
+    signingConfigs {
+        release {
+        }
+
+        debug {
+
+        }
+    }
+
+}
+def prop = new Properties()
+
+prop.load(new FileInputStream("$rootDir/buildsystem/app.properties"))
+
+android.compileSdkVersion = java.lang.Integer.parseInt(prop.get('androidCompileSdkVersion'))
+android.buildToolsVersion = prop.get('androidBuildToolsVersion')
+
+android.defaultConfig.minSdkVersion = prop.get('androidMinSdkVersion')
+android.defaultConfig.targetSdkVersion = prop.get('androidTargetSdkVersion')
+
+android.defaultConfig.applicationId = prop.get('ApplicationId')
+android.defaultConfig.versionCode = Integer.parseInt(prop.get('VersionCode'))
+android.defaultConfig.versionName = prop.get('VersionName')
+
+
