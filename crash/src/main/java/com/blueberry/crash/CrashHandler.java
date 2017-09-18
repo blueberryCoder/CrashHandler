@@ -133,6 +133,8 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         } else {
             if (null != mReleaseErrorHandler) {
                 mReleaseErrorHandler.handlerError(header, e);
+            }else{
+                mUncaughtExceptionHandler.uncaughtException(t, e);
             }
         }
     }
